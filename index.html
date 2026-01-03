@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta de Bienvenida - Fempa</title>
+    <style>
+        body {
+            font-family: 'Comic sans', sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            
+            color: rgb(3, 3, 3);
+            text-align: center;
+            padding: 20px;
+        }
+
+        header img {
+            width: 80px;
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+
+        .carta {
+            max-width: 700px;
+            background-color: white;
+            margin: 30px auto;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+
+        .carta h2 {
+            color: #1a73e8;
+            margin-top: 0;
+        }
+
+        .fecha {
+            text-align: right;
+            font-style: italic;
+            color: #555;
+        }
+
+        .contenido {
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        .firma {
+            margin-top: 40px;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 15px;
+            color: rgb(0, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="fempa.png" alt="Logo Fempa">
+        <h1>Fempa</h1>
+    </header>
+
+    <div class="carta">
+        <h2 id="saludo"></h2>
+        <p class="fecha" id="fecha"></p>
+        <p><strong>Para:</strong> <span id="empleado"></span></p>
+        <div class="contenido" id="contenido"></div>
+        <p class="firma" id="emisor"></p>
+    </div>
+
+    <footer>
+         <span id="anio"></span> Fempa. TESE.
+    </footer>
+
+    <script>
+        const data = {
+            "empresa": {
+                "nombre": "Fempa",
+                "fecha": { "generada": "2025-12-28" }
+            },
+            "empleado": "Pérez Miguel",
+            "mensajeBienvenida": {
+                "saludo": "¡Bienvenida a la empresa!",
+                "contenido": "Bienvenido a Fempa, en esta empresa lograrás crecer como persona, y como empleado mejorarás tus habilidades sociales y blandas. Espero que puedas desempeñarte de la mejor forma en tu nuevo puesto."
+            },
+            "emisor": "Pérez Jose - Recursos Humanos"
+        };
+
+        document.getElementById('saludo').textContent = data.mensajeBienvenida.saludo;
+        document.getElementById('empleado').textContent = data.empleado;
+        document.getElementById('contenido').textContent = data.mensajeBienvenida.contenido;
+        document.getElementById('emisor').textContent = data.emisor;
+
+        const fecha = new Date();
+        const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('fecha').textContent = fecha.toLocaleDateString('es-MX', opciones);
+        document.getElementById('anio').textContent = fecha.getFullYear();
+    </script>
+</body>
+</html>
